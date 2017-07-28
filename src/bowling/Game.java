@@ -9,6 +9,6 @@ class Game {
     }
 
     void roll(int pins) {
-        score = pins;
+        score += pins;
     }
 }

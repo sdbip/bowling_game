@@ -1,5 +1,6 @@
 package bowling;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,5 +25,13 @@ class ScoringTests {
         game.roll(1);
         game.roll(1);
         assertEquals(2, game.score());
+    }
+
+    @Test @Disabled
+    void rollSpare_bonusFromNextRoll() {
+        game.roll(0);
+        game.roll(10); // spare
+        game.roll(3);
+        assertEquals(16, game.score());
     }
 }

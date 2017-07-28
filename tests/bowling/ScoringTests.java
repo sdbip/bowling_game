@@ -20,7 +20,7 @@ class ScoringTests {
     }
 
     @Test
-    void teoRolls_scoreIsTotalNumberOfPins() {
+    void twoRolls_scoreIsTotalNumberOfPins() {
         game.roll(1);
         game.roll(1);
         assertEquals(2, game.score());

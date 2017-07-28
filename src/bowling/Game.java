@@ -17,9 +17,8 @@ class Game {
             if (isStrike(framingRoll)) {
                 score += ALL_PINS + strikeBonus(framingRoll);
                 framingRoll--;
-                continue;
             }
-            if (isSpare(framingRoll))
+            else if (isSpare(framingRoll))
                 score += ALL_PINS + spareBonus(framingRoll);
             else
                 score += rolls[framingRoll] + rolls[framingRoll + 1];

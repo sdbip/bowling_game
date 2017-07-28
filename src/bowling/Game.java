@@ -11,11 +11,19 @@ class Game {
 
     int score() {
         int score = 0;
-        for (int i = 0; i < rolls.length - 1; i++) {
-            if (rolls[i] + rolls[i + 1] == 10) // spare
-                score += rolls[i + 2];
-            score += rolls[i];
+        for (int framingRoll = 0; framingRoll < rolls.length - 1; framingRoll++) {
+            if (isSpare(framingRoll) == 10)
+                score += spareBonus(framingRoll);
+            score += rolls[framingRoll];
         }
         return score;
+    }
+
+    private int isSpare(int framingRoll) {
+        return rolls[framingRoll] + rolls[framingRoll + 1];
+    }
+
+    private int spareBonus(int framingRoll) {
+        return rolls[framingRoll + 2];
     }
 }

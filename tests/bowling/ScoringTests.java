@@ -27,7 +27,7 @@ class ScoringTests {
         assertEquals(2, game.score());
     }
 
-    @Test @Disabled
+    @Test
     void rollSpare_bonusFromNextRoll() {
         game.roll(0);
         game.roll(10); // spare

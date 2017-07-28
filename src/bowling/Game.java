@@ -19,15 +19,15 @@ class Game {
                 framingRoll--;
                 continue;
             }
-            if (isSpare(framingRoll) == ALL_PINS)
+            if (isSpare(framingRoll))
                 score += spareBonus(framingRoll);
             score += rolls[framingRoll] + rolls[framingRoll + 1];
         }
         return score;
     }
 
-    private int isSpare(int framingRoll) {
-        return rolls[framingRoll] + rolls[framingRoll + 1];
+    private boolean isSpare(int framingRoll) {
+        return rolls[framingRoll] + rolls[framingRoll + 1] == ALL_PINS;
     }
 
     private int spareBonus(int framingRoll) {

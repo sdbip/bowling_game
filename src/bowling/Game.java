@@ -14,8 +14,8 @@ class Game {
     int score() {
         int score = 0;
         for (int framingRoll = 0; framingRoll < rolls.length - 1; framingRoll += 2) {
-            if (rolls[framingRoll] == ALL_PINS) { // strike
-                score += ALL_PINS + rolls[framingRoll + 1] + rolls[framingRoll + 2];
+            if (isStrike(framingRoll)) {
+                score += ALL_PINS + strikeBonus(framingRoll);
                 framingRoll--;
                 continue;
             }
@@ -24,6 +24,14 @@ class Game {
             score += rolls[framingRoll] + rolls[framingRoll + 1];
         }
         return score;
+    }
+
+    private boolean isStrike(int framingRoll) {
+        return rolls[framingRoll] == ALL_PINS;
+    }
+
+    private int strikeBonus(int framingRoll) {
+        return rolls[framingRoll + 1] + rolls[framingRoll + 2];
     }
 
     private boolean isSpare(int framingRoll) {

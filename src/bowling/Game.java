@@ -3,7 +3,7 @@ package bowling;
 class Game {
     private static final int ALL_PINS = 10;
 
-    private final int[] rolls = new int[4];
+    private final int[] rolls = new int[5];
     private int currentRoll = 0;
 
     void roll(int pins) {
@@ -13,10 +13,10 @@ class Game {
 
     int score() {
         int score = 0;
-        for (int framingRoll = 0; framingRoll < rolls.length - 1; framingRoll++) {
+        for (int framingRoll = 0; framingRoll < rolls.length - 1; framingRoll += 2) {
             if (isSpare(framingRoll) == ALL_PINS)
                 score += spareBonus(framingRoll);
-            score += rolls[framingRoll];
+            score += rolls[framingRoll] + rolls[framingRoll + 1];
         }
         return score;
     }

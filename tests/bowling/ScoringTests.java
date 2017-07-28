@@ -34,4 +34,22 @@ class ScoringTests {
         game.roll(3);
         assertEquals(16, game.score());
     }
+
+    @Test
+    void fourRolls_allAreCounted() {
+        game.roll(3);
+        game.roll(4);
+        game.roll(5);
+        game.roll(3);
+        assertEquals(15, game.score());
+    }
+
+    @Test
+    void notSpare_noBonus() {
+        game.roll(3);
+        game.roll(5);
+        game.roll(5); // not spare - this is a new frame
+        game.roll(3);
+        assertEquals(16, game.score());
+    }
 }

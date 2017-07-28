@@ -3,7 +3,7 @@ package bowling;
 class Game {
     private static final int ALL_PINS = 10;
 
-    private final int[] rolls = new int[20];
+    private final int[] rolls = new int[21];
     private int currentRoll = 0;
 
     void roll(int pins) {

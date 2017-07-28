@@ -53,7 +53,7 @@ class ScoringTests {
     }
 
     @Test
-    void strike_bonussFromNextTwoRolls() {
+    void strike_bonusFromNextTwoRolls() {
         game.roll(10); // strike
         game.roll(3);
         game.roll(4);
@@ -65,5 +65,16 @@ class ScoringTests {
         for (int i = 0; i < 12; i++)
             game.roll(10);
         assertEquals(300, game.score());
+    }
+
+    @Test
+    void strikeOnLastFrame_causes21Rolls() {
+        for (int i = 0; i < 18; i++) {
+            game.roll(0);
+        }
+        game.roll(10); // strike => two bonus rolls
+        game.roll(10); // bonus roll
+        game.roll(10); // bonus roll
+        assertEquals(30, game.score());
     }
 }

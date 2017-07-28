@@ -59,4 +59,11 @@ class ScoringTests {
         game.roll(4);
         assertEquals(24, game.score());
     }
+
+    @Test
+    void perfectGame_scoreIs300() {
+        for (int i = 0; i < 12; i++)
+            game.roll(10);
+        assertEquals(300, game.score());
+    }
 }

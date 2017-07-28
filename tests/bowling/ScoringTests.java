@@ -10,4 +10,11 @@ class ScoringTests {
         Game game = new Game();
         assertEquals(0, game.score());
     }
+
+    @Test
+    void oneRoll_scoreIsNumberOfPins() {
+        Game game = new Game();
+        game.roll(1);
+        assertEquals(1, game.score());
+    }
 }

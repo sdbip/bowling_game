@@ -1,7 +1,14 @@
 package bowling;
 
 class Game {
+
+    private int score = 0;
+
     int score() {
-        return 0;
+        return score;
+    }
+
+    void roll(int pins) {
+        score = pins;
     }
 }

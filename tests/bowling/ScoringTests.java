@@ -52,4 +52,12 @@ class ScoringTests {
         game.roll(3);
         assertEquals(16, game.score());
     }
+
+    @Test
+    void strike_bonussFromNextTwoRolls() {
+        game.roll(10); // strike
+        game.roll(3);
+        game.roll(4);
+        assertEquals(24, game.score());
+    }
 }

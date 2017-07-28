@@ -13,10 +13,12 @@ class Game {
 
     int score() {
         int score = 0;
-        for (int framingRoll = 0; framingRoll < rolls.length - 1; framingRoll += 2) {
+        int strikes = 0;
+        for (int i = 0; i < rolls.length - 1; i += 2) {
+            int framingRoll = i - strikes;
             if (isStrike(framingRoll)) {
                 score += ALL_PINS + strikeBonus(framingRoll);
-                framingRoll--;
+                strikes++;
             }
             else if (isSpare(framingRoll))
                 score += ALL_PINS + spareBonus(framingRoll);

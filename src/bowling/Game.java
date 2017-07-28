@@ -1,6 +1,8 @@
 package bowling;
 
 class Game {
+    private static final int ALL_PINS = 10;
+
     private final int[] rolls = new int[4];
     private int currentRoll = 0;
 
@@ -12,7 +14,7 @@ class Game {
     int score() {
         int score = 0;
         for (int framingRoll = 0; framingRoll < rolls.length - 1; framingRoll++) {
-            if (isSpare(framingRoll) == 10)
+            if (isSpare(framingRoll) == ALL_PINS)
                 score += spareBonus(framingRoll);
             score += rolls[framingRoll];
         }

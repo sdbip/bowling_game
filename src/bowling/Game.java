@@ -20,8 +20,9 @@ class Game {
                 continue;
             }
             if (isSpare(framingRoll))
-                score += spareBonus(framingRoll);
-            score += rolls[framingRoll] + rolls[framingRoll + 1];
+                score += ALL_PINS + spareBonus(framingRoll);
+            else
+                score += rolls[framingRoll] + rolls[framingRoll + 1];
         }
         return score;
     }

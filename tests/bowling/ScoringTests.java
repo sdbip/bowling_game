@@ -21,60 +21,62 @@ class ScoringTests {
 
     @Test
     void twoRolls_scoreIsTotalNumberOfPins() {
-        game.roll(1);
-        game.roll(1);
+        rollFrame(1, 1);
         assertEquals(2, game.score());
     }
 
     @Test
     void rollSpare_bonusFromNextRoll() {
-        game.roll(0);
-        game.roll(10); // spare
+        rollFrame(0, 10); // spare
         game.roll(3);
         assertEquals(16, game.score());
     }
 
     @Test
     void fourRolls_allAreCounted() {
-        game.roll(3);
-        game.roll(4);
-        game.roll(5);
-        game.roll(3);
+        rollFrame(3, 4);
+        rollFrame(5, 3);
         assertEquals(15, game.score());
     }
 
     @Test
     void notSpare_noBonus() {
-        game.roll(3);
-        game.roll(5);
-        game.roll(5); // not spare - this is a new frame
-        game.roll(3);
+        rollFrame(3, 5);
+        rollFrame(5, 3);
         assertEquals(16, game.score());
     }
 
     @Test
     void strike_bonusFromNextTwoRolls() {
-        game.roll(10); // strike
-        game.roll(3);
-        game.roll(4);
+        rollStrike();
+        rollFrame(3, 4);
         assertEquals(24, game.score());
     }
 
     @Test
     void perfectGame_scoreIs300() {
         for (int i = 0; i < 12; i++)
-            game.roll(10);
+            rollStrike();
         assertEquals(300, game.score());
     }
 
     @Test
     void strikeOnLastFrame_causes21Rolls() {
-        for (int i = 0; i < 18; i++) {
-            game.roll(0);
+        for (int i = 0; i < 9; i++) {
+            rollFrame(0, 0);
         }
-        game.roll(10); // strike => two bonus rolls
-        game.roll(10); // bonus roll
-        game.roll(10); // bonus roll
+        rollStrike();
+        rollStrike(); // bonus roll
+        rollStrike(); // bonus roll
         assertEquals(30, game.score());
+    }
+
+    private void rollStrike() {
+        game.roll(10);
+    }
+
+    private void rollFrame(int firstRoll, int secondRoll) {
+        game.roll(firstRoll);
+        game.roll(secondRoll);
     }
 }
